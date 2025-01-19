@@ -11,7 +11,7 @@ const isLoggedIn = localStorage.getItem('isLoggin');
       <Navbar />
       <section >
         <div className="welcome">
-          <h1>Welcome to Traveling Blog! <i className="fa-solid fa-earth-americas"></i> </h1>
+          <h1>Welcome to Traveling Blog. <i className="fa-solid fa-earth-americas"></i> </h1>
           <p>Find your favorite destinations around the world.</p>
           {!isLoggedIn ? <Link to="/auth">
             <button className="authBtn" role="button">
