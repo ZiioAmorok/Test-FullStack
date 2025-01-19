@@ -4,12 +4,12 @@ const jwt = require('jsonwebtoken');
 
 exports.loginUser = async (req, res) => {
     try {
-        const { email, name, password } = req.body;
+        const { email, password } = req.body;
         
         const user = await User.findOne({
             $or: [
                 { email: email },
-                { name: name }
+                { name: email }
             ]
         });
 
