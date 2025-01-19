@@ -1,0 +1,13 @@
+# Ignorovanie súborov prostredia
+.env
+
+# Ignorovanie záložných súborov a citlivých údajov
+*.log
+
+
+# Ignorovanie node_modules
+node_modules/
+
+# Ignorovanie build a distribučných zložiek
+dist/
+build/
