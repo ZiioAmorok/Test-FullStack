@@ -100,9 +100,9 @@ const Auth = () => {
       <form className="auth-form" onSubmit={handleSubmit}>
         <input
           className="auth-input"
-          type="email"
+          type="text"
           name="email"
-          placeholder="Email"
+          placeholder="Email or Name"
           value={formData.email}
           onChange={handleChange}
           required
