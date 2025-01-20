@@ -40,7 +40,7 @@ const Auth = () => {
           { withCredentials: true }
         );
         setMessage("Login successful");
-        localStorage.setItem('isLoggin', "true");
+        sessionStorage.setItem('isLoggin', "true");
       } else {
         await axios.post(
           "/api/users/register",
