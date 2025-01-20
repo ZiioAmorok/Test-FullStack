@@ -1,13 +1,12 @@
 import "./Home.css";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navigation";
-import {  useEffect } from "react";
 
 const Home = () => {
 const isLoggedIn = sessionStorage.getItem('isLoggin');
 
   return (
-    <div>
+    <div className="home">
       <Navbar />
       <section >
         <div className="welcome">

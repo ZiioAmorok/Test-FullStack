@@ -1,6 +1,6 @@
 import "./Auth.css";
 import axios from "axios";
-import { useState } from "react"
+import { useState } from "react";
 import { ImHome } from "react-icons/im";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -40,7 +40,7 @@ const Auth = () => {
           { withCredentials: true }
         );
         setMessage("Login successful");
-        sessionStorage.setItem('isLoggin', "true");
+        sessionStorage.setItem("isLoggin", "true");
       } else {
         await axios.post(
           "/api/users/register",
@@ -70,86 +70,88 @@ const Auth = () => {
 
   return (
     <div className="auth-container">
-      <h1 className="auth-header">{isLogin ? "Login" : "Register"}</h1>
-      <Link to="/">
-        {" "}
-        <ImHome className="iconHome" />
-      </Link>
-      <div className="auth-toggle-buttons">
-        <button
-          onClick={() => {
-            setIsLogin(true);
-            setMessage("");
-            setSuccess(false);
-          }}
-          disabled={isLogin}
-        >
-          Login
-        </button>
-        <button
-          onClick={() => {
-            setIsLogin(false);
-            setMessage("");
-            setSuccess(false);
-          }}
-          disabled={!isLogin}
-        >
-          Register
-        </button>
-      </div>
-      <form className="auth-form" onSubmit={handleSubmit}>
-        <input
-          className="auth-input"
-          type="text"
-          name="email"
-          placeholder="Email or Name"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        {!isLogin && (
+      <div className="auth-card">
+        <h1 className="auth-header">{isLogin ? "Login" : "Register"}</h1>
+        <Link to="/">
+          {" "}
+          <ImHome className="iconHome" />
+        </Link>
+        <div className="auth-toggle-buttons">
+          <button
+            onClick={() => {
+              setIsLogin(true);
+              setMessage("");
+              setSuccess(false);
+            }}
+            disabled={isLogin}
+          >
+            Login
+          </button>
+          <button
+            onClick={() => {
+              setIsLogin(false);
+              setMessage("");
+              setSuccess(false);
+            }}
+            disabled={!isLogin}
+          >
+            Register
+          </button>
+        </div>
+        <form className="auth-form" onSubmit={handleSubmit}>
           <input
             className="auth-input"
             type="text"
-            name="name"
-            placeholder="Name"
-            value={formData.name}
+            name="email"
+            placeholder="Email or Name"
+            value={formData.email}
             onChange={handleChange}
             required
           />
-        )}
-        <input
-          className="auth-input"
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        {!isLogin && (
+          {!isLogin && (
+            <input
+              className="auth-input"
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          )}
           <input
             className="auth-input"
             type="password"
-            name="passwordConfirm"
-            placeholder="Confirm Password"
-            value={formData.passwordConfirm}
+            name="password"
+            placeholder="Password"
+            value={formData.password}
             onChange={handleChange}
             required
           />
+          {!isLogin && (
+            <input
+              className="auth-input"
+              type="password"
+              name="passwordConfirm"
+              placeholder="Confirm Password"
+              value={formData.passwordConfirm}
+              onChange={handleChange}
+              required
+            />
+          )}
+          <button className="auth-submit-button" type="submit">
+            {isLogin ? "Login" : "Register"}
+          </button>
+        </form>
+        {message && (
+          <p
+            style={{ color: success ? "green" : "red" }}
+            className="auth-message"
+          >
+            {message}
+          </p>
         )}
-        <button className="auth-submit-button" type="submit">
-          {isLogin ? "Login" : "Register"}
-        </button>
-      </form>
-      {message && (
-        <p
-          style={{ color: success ? "green" : "red" }}
-          className="auth-message"
-        >
-          {message}
-        </p>
-      )}
+      </div>
     </div>
   );
 };
