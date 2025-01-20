@@ -7,7 +7,7 @@ const isLoggedIn = localStorage.getItem('isLoggin') === 'true';
     if (isLoggedIn) {
       try {
         await axios.post("/api/users/logout", { withCredentials: true });
-        localStorage.removeItem("isLoggin");
+        sessionStorage.removeItem("isLoggin");
         window.location.href = "/";
       } catch (err) {
         console.error("Logout error", err);
