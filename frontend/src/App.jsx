@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Destinations from './pages/Destinations';
 import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
+import OneDestination from './pages/OneDestination';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/auth"  element={<Auth />} />
         <Route path="/destinations" element={<ProtectedRoute><Destinations /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/one/:id" element={<ProtectedRoute><OneDestination/></ProtectedRoute>} />
       </Routes>
     </Router>
   )
