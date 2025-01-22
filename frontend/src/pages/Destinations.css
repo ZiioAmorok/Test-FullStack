@@ -1,19 +1,23 @@
-.destinations{
+.destinations {
   background-color: #0e0d0df6;
   color: #f7f1f1;
   min-height: 100vh;
 }
+
 .destinations-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
   justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 40px;
 }
 
 .destination-card {
   position: relative;
-  width: 250px;
-  height: 250px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   background-color: #f2f2f2;
   border-radius: 10px;
   overflow: hidden;
@@ -38,7 +42,6 @@
 }
 
 .card__content {
-  color: #faf5f5;
   position: absolute;
   top: 0;
   left: 0;
@@ -59,21 +62,12 @@
 .card__title {
   margin: 0;
   padding-left: 5px;
-  font-size: 24px;
+  font-size: 30px;
   color: #fdfcfc;
   font-weight: 700;
 }
 
-
-.card__title {
-  margin: 0;
-  padding-left: 5px;
-  font-size: 24px;
-  color: #fdfcfc;
-  font-weight: 700;
-}
-
-.arrow-right{
+.arrow-right {
   position: absolute;
   bottom: 0;
   right: 20px;
@@ -82,8 +76,8 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.arrow-right:hover{
-  transform: translateX(10px);
+.arrow-right:hover {
+  transform: translateX(20px);
   cursor: pointer;
 }
 
@@ -153,5 +147,26 @@
   }
   to {
     transform: rotate(360deg) translateX(42px) rotate(-360deg);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .card__title {
+    font-size: 24px;
+  }
+
+  .arrow-right {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card__title {
+    font-size: 20px;
+  }
+
+  .arrow-right {
+    font-size: 60px;
   }
 }

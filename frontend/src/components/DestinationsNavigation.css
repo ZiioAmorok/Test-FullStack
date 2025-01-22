@@ -1,0 +1,17 @@
+.destinations-navigation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #486b91;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.home-icon{
+    font-size: 2rem;
+    color: #fff;
+    margin-right: 1rem;
+}
