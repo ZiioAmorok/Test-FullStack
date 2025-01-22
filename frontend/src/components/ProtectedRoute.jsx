@@ -24,7 +24,13 @@ const ProtectedRoute = ({ children }) => {
   }, []);
 
   if (auth === null) {
-    return <div>Checking authentication...</div>;
+    return<div className="loader">
+    <span className="shadow"></span>
+    <span className="shadow"></span>
+    <span className="shadow"></span>
+    <span className="dot"></span>
+    <span className="text">&nbsp;&nbsp;&nbsp;Checking authentication...</span>
+  </div>;
   }
 
 
