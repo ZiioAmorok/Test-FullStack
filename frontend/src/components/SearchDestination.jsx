@@ -1,14 +1,31 @@
-import "./SearchDestination.css"
+import "./SearchDestination.css";
 import { VscSearch } from "react-icons/vsc";
-
+import { useState } from "react";
 
 const SearchDestination = () => {
-  return (
-    <div className="search-destination-container">
-        <label htmlFor="search"><VscSearch className="search-icon" /></label>
-        <input type="text" placeholder="Search..." className="search-destination" id="search" />
-    </div>
-  )
-}
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
 
-export default SearchDestination
+  const toggleSearchVisibility = () => {
+    setIsSearchVisible((prev) => !prev);
+  };
+
+  return (
+    <div className="search-container">
+      <button 
+        onClick={toggleSearchVisibility} 
+        className="search-icon-button" 
+        aria-label="Toggle search input"
+      >
+        <VscSearch className="search-icon" />
+      </button>
+      <input 
+        type="text" 
+        placeholder="Search..." 
+        className={`search-input ${isSearchVisible ? "active" : ""}`} 
+        id="search" 
+      />
+    </div>
+  );
+};
+
+export default SearchDestination;

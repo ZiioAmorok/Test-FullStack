@@ -1,7 +1,8 @@
 import "./Destinations.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaStar } from "react-icons/fa6";
 import { MdArrowRightAlt } from "react-icons/md";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import DestinationNav from "../components/DestinationsNavigation";
 import axios from "axios";
@@ -11,6 +12,10 @@ const Destinations = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [visibleCount, setVisibleCount] = useState(6);
+
+  const destinationsContainerRef = useRef(null);
+  const showMoreRef = useRef(null);
+
   useEffect(() => {
     const fetchDestinations = async () => {
       try {
@@ -25,11 +30,27 @@ const Destinations = () => {
     fetchDestinations();
   }, []);
 
+  const handleShowMore = () => {
+    setVisibleCount(destinations.length);
+    setTimeout(() => {
+      if (showMoreRef.current) {
+        showMoreRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 100);
+  };
+
+  const handleShowLess = () => {
+    setVisibleCount(6);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="destinations">
       <DestinationNav />
-      <div className="destinations-container">
+      <div className="destinations-container" ref={destinationsContainerRef}>
         {loading && (
           <div className="loader">
             <span className="shadow"></span>
@@ -57,11 +78,15 @@ const Destinations = () => {
         ))}
       </div>
 
-      <div className="show-btna">
+      <div className="show-btns" ref={showMoreRef}>
         {visibleCount >= destinations.length ? (
-          <button onClick={()=> setVisibleCount(6)}>Show Less</button>
+          <button onClick={handleShowLess}>
+            Show Less <FaArrowUp className="arrow-btn-less" />
+          </button>
         ) : (
-          <button onClick={()=> setVisibleCount(destinations.length)}>Show More</button>
+          <button onClick={handleShowMore}>
+            Show More <FaArrowDown className="arrow-btn" />
+          </button>
         )}
       </div>
     </div>
