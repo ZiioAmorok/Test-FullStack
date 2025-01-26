@@ -9,7 +9,7 @@
   grid-template-columns: repeat(3, 1fr); 
   gap: 30px;
   justify-content: center;
-  margin: 0 auto;
+  margin: 3rem auto;
   max-width: 1200px;
   padding: 40px;
 }

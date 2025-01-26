@@ -3,11 +3,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: #486b91;
+    background-color: #486b914d;
     color: #fff;
     font-size: 1.2rem;
     font-weight: 500;
-    margin-bottom: 2rem;
 }
 
 .home-icon{
