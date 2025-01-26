@@ -1,34 +1,17 @@
 import "./Destinations.css";
-import { useState, useEffect, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { FaStar } from "react-icons/fa6";
 import { MdArrowRightAlt } from "react-icons/md";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import DestinationNav from "../components/DestinationsNavigation";
-import axios from "axios";
+import { DestinationsContext } from "../contexts/DestinationsContext";
 
 const Destinations = () => {
-  const [destinations, setDestinations] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { destinations, loading, error } = useContext(DestinationsContext);
   const [visibleCount, setVisibleCount] = useState(6);
-
   const destinationsContainerRef = useRef(null);
   const showMoreRef = useRef(null);
-
-  useEffect(() => {
-    const fetchDestinations = async () => {
-      try {
-        const res = await axios.get("/api/destinations");
-        setDestinations(res.data);
-        setLoading(false);
-      } catch (err) {
-        setError("Error fetching destinations");
-        setLoading(false);
-      }
-    };
-    fetchDestinations();
-  }, []);
 
   const handleShowMore = () => {
     setVisibleCount(destinations.length);
@@ -70,7 +53,7 @@ const Destinations = () => {
                 <FaStar />
                 {destination.rating}
               </p>
-              <Link to="/">
+              <Link to={`/one/${destination._id}`}>
                 <MdArrowRightAlt className="arrow-right" />
               </Link>
             </div>
