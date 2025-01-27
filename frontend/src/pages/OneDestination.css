@@ -1,0 +1,32 @@
+.video-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Pokryje celé zobrazenie na výšku */
+    overflow: hidden; /* Aby video nevyčnievalo z kontajnera */
+  }
+  
+  /* Video, absolútne pozicované v pozadí */
+  .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Zachová pomer strán a orezáva */
+    filter: brightness(0.3); /* Pridaj si tmavší/ svetlejší filter, keď chceš */
+    z-index: -1; /* Aby bolo ZA hero obsahom */
+  }
+  
+  /* Obsah, ktorý sa zobrazí nad videom */
+  .hero-content {
+    position: relative;
+    z-index: 1; /* Prekryje video */
+    color: #fff; /* Daj bielu farbu textu, nech je viditeľný na tmavom videu */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Aby text sedel v strede hero sekcie */
+    text-align: center;
+  }
+  
