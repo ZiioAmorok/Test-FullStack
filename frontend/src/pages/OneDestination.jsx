@@ -20,7 +20,7 @@ const OneDestination = () => {
   
   return (
     <>
-      
+      <section>
       <div className="video-hero">
         <DestinationsNavigation />
         <video
@@ -35,6 +35,13 @@ const OneDestination = () => {
           <p>{selectedDestination.rating}</p>
         </div>
       </div>
+      </section>
+
+      <div className="blurBorder" />
+      
+      <section style={{minHeight:'100vh', backgroundColor:'black'}}>
+
+      </section>
     </>
   );
 };
