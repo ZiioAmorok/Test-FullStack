@@ -63,7 +63,15 @@ const Auth = () => {
         passwordConfirm: "",
       });
     } catch (error) {
-      setMessage(error.response?.data?.message || "Something went wrong");
+      if (error.response) {
+        if (error.response.status === 401) {
+            setMessage(error.response.data.error || "Password is incorrect");
+        } else {
+            setMessage(error.response.data.error || "Something went wrong");
+        }
+      }else {
+        setMessage("Server error, please try again later.");
+      }
       setSuccess(false);
     }
   };

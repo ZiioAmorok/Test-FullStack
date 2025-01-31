@@ -31,48 +31,50 @@ const Destinations = () => {
   };
 
   return (
-    <div className="destinations">
-      <DestinationNav />
-      <div className="destinations-container" ref={destinationsContainerRef}>
-        {loading && (
-          <div className="loader">
-            <span className="shadow"></span>
-            <span className="shadow"></span>
-            <span className="shadow"></span>
-            <span className="dot"></span>
-            <span className="text">&nbsp;&nbsp;&nbsp;loading...</span>
-          </div>
-        )}
-        {error && <p>{error}</p>}
-        {destinations.slice(0, visibleCount).map((destination) => (
-          <div className="destination-card" key={destination._id}>
-            <img src={destination.image} alt={destination.name} />
-            <div className="card__content">
-              <h2 className="card__title">{destination.name}</h2>
-              <p>
-                <FaStar />
-                {destination.rating}
-              </p>
-              <Link to={`/one/${destination._id}`}>
-                <MdArrowRightAlt className="arrow-right" />
-              </Link>
+    <section>
+      <div className="destinations">
+        <DestinationNav />
+        <div className="destinations-container" ref={destinationsContainerRef}>
+          {loading && (
+            <div className="loader">
+              <span className="shadow"></span>
+              <span className="shadow"></span>
+              <span className="shadow"></span>
+              <span className="dot"></span>
+              <span className="text">&nbsp;&nbsp;&nbsp;loading...</span>
             </div>
-          </div>
-        ))}
-      </div>
+          )}
+          {error && <p>{error}</p>}
+          {destinations.slice(0, visibleCount).map((destination) => (
+            <div className="destination-card" key={destination._id}>
+              <img src={destination.image} alt={destination.name} />
+              <div className="card__content">
+                <h2 className="card__title">{destination.name}</h2>
+                <p>
+                  <FaStar />
+                  {destination.rating}
+                </p>
+                <Link to={`/one/${destination._id}`}>
+                  <MdArrowRightAlt className="arrow-right" />
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
 
-      <div className="show-btns" ref={showMoreRef}>
-        {visibleCount >= destinations.length ? (
-          <button onClick={handleShowLess}>
-            Show Less <FaArrowUp className="arrow-btn-less" />
-          </button>
-        ) : (
-          <button onClick={handleShowMore}>
-            Show More <FaArrowDown className="arrow-btn" />
-          </button>
-        )}
+        <div className="show-btns" ref={showMoreRef}>
+          {visibleCount >= destinations.length ? (
+            <button onClick={handleShowLess}>
+              Show Less <FaArrowUp className="arrow-btn-less" />
+            </button>
+          ) : (
+            <button onClick={handleShowMore}>
+              Show More <FaArrowDown className="arrow-btn" />
+            </button>
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
