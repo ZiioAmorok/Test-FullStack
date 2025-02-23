@@ -1,19 +1,22 @@
-
-body {
+.auth-container {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: Arial, sans-serif;
+  background-image: url(../assets/mountains.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
-.auth-container {
+.auth-card {
+  min-width: 400px;
   position: relative;
   background: #14141486;
   backdrop-filter: blur(5px);
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
   max-width: 400px;
   text-align: center;
 }
@@ -89,10 +92,25 @@ body {
   color: #ff4d4d;
 }
 
-.iconHome{
+.iconHome {
   position: absolute;
   top: 1rem;
   left: 1rem;
   font-size: 2rem;
   color: #486b91;
+}
+
+@media (max-width: 768px) {
+  .auth-card {
+    min-width: 10rem;  
+    padding: 1.5rem; 
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    min-width: 85%;
+    max-width: 85%; 
+    padding: 1rem;
+  }
 }

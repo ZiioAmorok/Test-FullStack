@@ -1,13 +1,13 @@
 import axios from "axios";
 
 const LoginLogoutBtn = () => {
-const isLoggedIn = localStorage.getItem('isLoggin') === 'true';
+const isLoggedIn = sessionStorage.getItem('isLoggin') === 'true';
 
   const handleLoginActions = async () => {
     if (isLoggedIn) {
       try {
         await axios.post("/api/users/logout", { withCredentials: true });
-        localStorage.removeItem("isLoggin");
+        sessionStorage.removeItem("isLoggin");
         window.location.href = "/";
       } catch (err) {
         console.error("Logout error", err);

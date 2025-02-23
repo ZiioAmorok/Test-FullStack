@@ -6,7 +6,7 @@ const { showAllDestinations, showOneDestination } = require('../controllers/dest
 const updateDestination  = require('../controllers/destinationsControlller/updateDestination.js');
 const authenticate = require('../middlewares/auth.js')
 
-router.post('/', createDestination);
+router.post('/create', createDestination);
 router.delete('/:id', deleteDestination );
 router.get('/', authenticate, showAllDestinations );
 router.get('/:id', showOneDestination );
